@@ -1,0 +1,15 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: allst-mirco-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ReturnTears/allst-config.git
+          search-paths:
+            - allst-config
+          force-pull: true
+        default-label: master
+

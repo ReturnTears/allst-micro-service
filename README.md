@@ -29,13 +29,21 @@
 
 ## 🍑 注册中心
 模块名： allst-micro-eureka
+
 配置注册中心流程：
-1、添加application.yml配置文件，并添加配置
-2、添加Eureka Server启动类
-3、启动项目成功后访问：http://localhost:8761
++ 1、添加application.yml配置文件，并添加配置
++ 2、添加Eureka Server启动类
++ 3、添加项目启动类，启动项目成功后访问：http://localhost:8761
+
 
 ## 🍉 配置中心
 模块名：allst-micro-config
+
+配置中心流程（以获取GitHub上配置文件为例）：
+- 1、在allst-config（该想要需要为公共访问权限，私有访问权限放在后续介绍）项目中新建配置文件config-mirco-service-dev.yml
+- 2、添加application.yml配置文件，并添加配置
+- 3、添加项目启动类，启动成功后访问：http://localhost:8090/config-micro-service-dev.yml
+- 4、访问配置文件成功，文件存放在：file:/C:/Users/June/AppData/Local/Temp/config-repo-8257864722419767941/config-micro-service-dev.yml
 
 ## 🍒 网关服务
 模块名：allst-micro-gateway
@@ -51,7 +59,7 @@
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
      </dependency>
 
-2、编译或者启动项目报错：Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:co
+2、编译或者启动项目报错：Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project 项目名称或模块名称: Fatal error compiling
 解决思路：pom.xml中添加配置
     <build>
         <plugins>
