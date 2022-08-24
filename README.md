@@ -27,6 +27,10 @@
 ## 🥥 广告模块
 模块名： allst-micro-ad
 
+开发广告业务：
++ 1、新建两个子模块api 和 impl
++ 2、新建子模块是借鉴了Dubbo的设计思路
+
 ## 🍑 注册中心
 模块名： allst-micro-eureka
 
@@ -76,4 +80,9 @@
     </build>
 
 3、
+```
+
+## Code Review
+```text
+项目的Code Review记录都记录在JetBrains Space 中
 ```
