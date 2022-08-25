@@ -1,6 +1,11 @@
 # 微服务项目搭建
 新建空目录：allst-micro-service
 
+```text
+项目在JDK8+Maven3.6.1 和 JDK8+Maven3.6.3下都可以正常运行
+若项目在启动的过程中存在异常或错误，查看 ## 问题记录及解决思路
+```
+
 ## 🍌 其他模块
 模块名： allst-micro-bom
 ```text
@@ -66,7 +71,7 @@ impl 引用 api模块
 模块名：allst-micro-gateway
 
 
-## 问题记录
+## 📚 问题记录及解决思路
 ```text
 1、启动SpringCloud项目启动报错：Error creating bean with name peerEurekaNodes defined in class path resource
 解决思路：新版本的Spring Cloud对熔断器Hystrix有要求，Eureka中必须添加对Hystrix的依赖才可以。
@@ -100,7 +105,7 @@ impl 引用 api模块
     先对父项目进行clean和install，再运行项目
 ```
 
-## Code Review
+## 😊 Code Review
 ```text
 项目的Code Review记录都记录在JetBrains Space 中
 ```
