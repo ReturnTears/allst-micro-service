@@ -1,0 +1,29 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: allst-micro-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: allst-micro-front
+          uri: lb://allst-micro-front
+          predicates:
+            - Path=/front/**
+          filters:
+            - StripPrefix=1
+
+        - id: allst-micro-boot
+          uri: lb://allst-micro-boot
+          predicates:
+            - Path=/boot/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+

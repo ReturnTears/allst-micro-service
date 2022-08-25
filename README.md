@@ -69,7 +69,16 @@ impl 引用 api模块
 
 ## 🍒 网关服务
 模块名：allst-micro-gateway
+```text
+网关根据规则进行路由分发，分别去访问不同的服务
 
+开发流程：
+1、添加依赖
+2、添加配置
+3、添加启动类
+4、启动网关服务，访问地址： http://localhost:9001/boot/ad/space/getAllSpaces
+正常访问到数据即成功配置网关
+```
 
 ## 📚 问题记录及解决思路
 ```text
