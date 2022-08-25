@@ -28,8 +28,16 @@
 模块名： allst-micro-ad
 
 开发广告业务：
-+ 1、新建两个子模块api 和 impl
++ 1、新建两个子模块allst-micro-ad-api 和 allst-micro-ad-impl, 以下简称： api 和 impl
 + 2、新建子模块是借鉴了Dubbo的设计思路
+
+```text
+api模块提供对外调用的服务
+impl提供业务实现相关的服务
+
+api 使用openfeign编写好远程调用服务后，将api模块安装到本地仓库中
+impl 引用 api模块
+```
 
 ## 🍑 注册中心
 模块名： allst-micro-eureka
