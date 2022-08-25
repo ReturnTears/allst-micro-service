@@ -6,7 +6,7 @@
 ```text
 该模块主要用于项目的依赖管理，因此该模块的打包方式为pom
 添加SpringBoot、SpringCloud相关依赖
-
+其他模块会依赖该模块，需将当前模块install到本地仓库中
 ```
 ## 🍓 公共模块
 模块名： allst-micro-common
@@ -23,6 +23,11 @@
 
 ## 🍋 后台搭建
 模块名： allst-micro-boot
+
+```text
+http://localhost:8082/ad/space/getAllSpaces
+boot模块中通过远程调用访问api模块中service接口，api会访问impl模块的实现，不通过impl模块的前端控制器即可访问后端服务
+```
 
 ## 🥥 广告模块
 模块名： allst-micro-ad
@@ -87,7 +92,12 @@ impl 引用 api模块
         </plugins>
     </build>
 
-3、
+3、 pom中parent标签：<relativePath/>
+设定一个空值将始终从中央仓库中获取，不从本地路径获取，如<relativePath />  
+
+4、运行项目时报错：org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project xxx
+项目结构说明：项目结构是一个父项目，多个子项目目录如下，一个子项目依赖于另一个子项目，这时候运行项目报上述错误，解决如下：
+    先对父项目进行clean和install，再运行项目
 ```
 
 ## Code Review
