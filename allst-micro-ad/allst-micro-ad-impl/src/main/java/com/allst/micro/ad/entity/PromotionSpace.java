@@ -2,9 +2,10 @@ package com.allst.micro.ad.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -36,14 +37,22 @@ public class PromotionSpace implements Serializable {
     @TableField("spaceKey")
     private String spaceKey;
 
+    /**
+     * 创建时间
+     */
     @TableField("createTime")
-    private LocalDateTime createTime;
+    private Date createTime;
 
+    /**
+     * 更新时间
+     */
     @TableField("updateTime")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
+    /**
+     * 是否删除：0未删除 1已删除
+     */
     @TableField("isDel")
     private Integer isDel;
-
 
 }

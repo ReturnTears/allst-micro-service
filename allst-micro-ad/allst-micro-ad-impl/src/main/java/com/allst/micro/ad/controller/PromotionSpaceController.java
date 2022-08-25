@@ -1,9 +1,14 @@
 package com.allst.micro.ad.controller;
 
 
+import com.allst.micro.ad.entity.PromotionSpace;
+import com.allst.micro.ad.service.IPromotionSpaceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,7 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-08-24
  */
 @RestController
-@RequestMapping("/allst-micro-ad-impl/promotion-space")
+@RequestMapping("/ad/space")
 public class PromotionSpaceController {
 
+    @Autowired
+    IPromotionSpaceService spaceService;
+
+    @RequestMapping("/getAllSpaces")
+    public List<PromotionSpace> getAllSpaces() {
+        return spaceService.list();
+    }
 }

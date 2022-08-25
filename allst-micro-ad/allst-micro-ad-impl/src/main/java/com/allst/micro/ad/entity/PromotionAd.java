@@ -2,9 +2,10 @@ package com.allst.micro.ad.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -61,19 +62,19 @@ public class PromotionAd implements Serializable {
      * 开始时间
      */
     @TableField("startTime")
-    private LocalDateTime startTime;
+    private Date startTime;
 
     /**
      * 结束时间
      */
     @TableField("endTime")
-    private LocalDateTime endTime;
+    private Date endTime;
 
     @TableField("createTime")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @TableField("updateTime")
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     private Integer status;
 

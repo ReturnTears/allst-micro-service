@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-08-24
  */
 @RestController
-@RequestMapping("/allst-micro-ad-impl/promotion-ad")
+@RequestMapping("/ad")
 public class PromotionAdController {
 
 }

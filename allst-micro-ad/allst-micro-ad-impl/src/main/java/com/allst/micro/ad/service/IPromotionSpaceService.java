@@ -1,7 +1,6 @@
 package com.allst.micro.ad.service;
 
 import com.allst.micro.ad.entity.PromotionSpace;
-import com.allst.micro.ad.entity.PromotionSpace;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
