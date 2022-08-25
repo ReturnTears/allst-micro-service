@@ -3,6 +3,7 @@ package com.allst.micro.remote;
 import com.allst.micro.dto.PromotionSpaceDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -17,6 +18,17 @@ import java.util.List;
 @FeignClient(name = "allst-micro-ad", path = "/ad")
 public interface AdSpaceRemoteService {
 
+    /**
+     * 获取所有的广告位
+     */
     @GetMapping("/space/getAllSpaces")
     List<PromotionSpaceDto> getAllSpaces();
+
+    /**
+     * 通过广告位获取所有的广告
+     * @param spaceKey 广告位对应Key
+     * @return 结果
+     */
+    @GetMapping("/getAdBySpaceKey")
+    List<PromotionSpaceDto> getAdBySpaceKey(@RequestParam String[] spaceKey);
 }

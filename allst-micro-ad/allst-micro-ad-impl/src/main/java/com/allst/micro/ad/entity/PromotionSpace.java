@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 
+ * 广告位实体，一个广告位对应多个广告
  * </p>
  *
  * @author Hutu

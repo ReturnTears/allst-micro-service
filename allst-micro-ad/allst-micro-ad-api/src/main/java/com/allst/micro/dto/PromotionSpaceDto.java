@@ -1,6 +1,7 @@
 package com.allst.micro.dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 广告位远程映射实体
@@ -37,6 +38,11 @@ public class PromotionSpaceDto {
      * 是否删除：0未删除 1已删除
      */
     private Integer isDel;
+
+    /**
+     * 广告列表
+     */
+    List<PromotionAdDto> adDtoList;
 
     public Integer getId() {
         return id;
@@ -84,5 +90,13 @@ public class PromotionSpaceDto {
 
     public void setIsDel(Integer isDel) {
         this.isDel = isDel;
+    }
+
+    public List<PromotionAdDto> getAdDtoList() {
+        return adDtoList;
+    }
+
+    public void setAdDtoList(List<PromotionAdDto> adDtoList) {
+        this.adDtoList = adDtoList;
     }
 }

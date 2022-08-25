@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 
+ *  广告实体
  * </p>
  *
  * @author Hutu
@@ -70,12 +70,21 @@ public class PromotionAd implements Serializable {
     @TableField("endTime")
     private Date endTime;
 
+    /**
+     * 创建日期
+     */
     @TableField("createTime")
     private Date createTime;
 
+    /**
+     * 更新日期
+     */
     @TableField("updateTime")
     private Date updateTime;
 
+    /**
+     * 状态：0无效 1有效
+     */
     private Integer status;
 
     /**
@@ -83,6 +92,9 @@ public class PromotionAd implements Serializable {
      */
     private Integer priority;
 
+    /**
+     * 广告缩略图
+     */
     private String img;
 
 

@@ -47,6 +47,12 @@ impl提供业务实现相关的服务
 
 api 使用openfeign编写好远程调用服务后，将api模块安装到本地仓库中
 impl 引用 api模块
+
+业务1： 查询所有的广告位
+接口地址： http://localhost:8001/ad/space/getAllSpaces
+
+业务2： 通过广告位查询广告业务
+接口地址： http://localhost:8001/ad/getAdBySpaceKey?spaceKey=north
 ```
 
 ## 🍑 注册中心
