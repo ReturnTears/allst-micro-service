@@ -1,12 +1,17 @@
 # 微服务项目搭建
 新建空目录：allst-micro-service
 
+```text
+项目在JDK8+Maven3.6.1 和 JDK8+Maven3.6.3下都可以正常运行
+若项目在启动的过程中存在异常或错误，查看 ## 问题记录及解决思路
+```
+
 ## 🍌 其他模块
 模块名： allst-micro-bom
 ```text
 该模块主要用于项目的依赖管理，因此该模块的打包方式为pom
 添加SpringBoot、SpringCloud相关依赖
-
+其他模块会依赖该模块，需将当前模块install到本地仓库中
 ```
 ## 🍓 公共模块
 模块名： allst-micro-common
@@ -24,12 +29,31 @@
 ## 🍋 后台搭建
 模块名： allst-micro-boot
 
+```text
+http://localhost:8082/ad/space/getAllSpaces
+boot模块中通过远程调用访问api模块中service接口，api会访问impl模块的实现，不通过impl模块的前端控制器即可访问后端服务
+```
+
 ## 🥥 广告模块
 模块名： allst-micro-ad
 
 开发广告业务：
-+ 1、新建两个子模块api 和 impl
++ 1、新建两个子模块allst-micro-ad-api 和 allst-micro-ad-impl, 以下简称： api 和 impl
 + 2、新建子模块是借鉴了Dubbo的设计思路
+
+```text
+api模块提供对外调用的服务
+impl提供业务实现相关的服务
+
+api 使用openfeign编写好远程调用服务后，将api模块安装到本地仓库中
+impl 引用 api模块
+
+业务1： 查询所有的广告位
+接口地址： http://localhost:8001/ad/space/getAllSpaces
+
+业务2： 通过广告位查询广告业务
+接口地址： http://localhost:8001/ad/getAdBySpaceKey?spaceKey=north
+```
 
 ## 🍑 注册中心
 模块名： allst-micro-eureka
@@ -51,9 +75,18 @@
 
 ## 🍒 网关服务
 模块名：allst-micro-gateway
+```text
+网关根据规则进行路由分发，分别去访问不同的服务
 
+开发流程：
+1、添加依赖
+2、添加配置
+3、添加启动类
+4、启动网关服务，访问地址： http://localhost:9001/boot/ad/space/getAllSpaces
+正常访问到数据即成功配置网关
+```
 
-## 问题记录
+## 📚 问题记录及解决思路
 ```text
 1、启动SpringCloud项目启动报错：Error creating bean with name peerEurekaNodes defined in class path resource
 解决思路：新版本的Spring Cloud对熔断器Hystrix有要求，Eureka中必须添加对Hystrix的依赖才可以。
@@ -79,10 +112,15 @@
         </plugins>
     </build>
 
-3、
+3、 pom中parent标签：<relativePath/>
+设定一个空值将始终从中央仓库中获取，不从本地路径获取，如<relativePath />  
+
+4、运行项目时报错：org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project xxx
+项目结构说明：项目结构是一个父项目，多个子项目目录如下，一个子项目依赖于另一个子项目，这时候运行项目报上述错误，解决如下：
+    先对父项目进行clean和install，再运行项目
 ```
 
-## Code Review
+## 😊 Code Review
 ```text
 项目的Code Review记录都记录在JetBrains Space 中
 ```
