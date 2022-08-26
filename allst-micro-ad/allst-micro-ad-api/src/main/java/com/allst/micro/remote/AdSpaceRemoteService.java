@@ -1,8 +1,10 @@
 package com.allst.micro.remote;
 
 import com.allst.micro.dto.PromotionSpaceDto;
+import com.allst.micro.response.ResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -30,5 +32,23 @@ public interface AdSpaceRemoteService {
      * @return 结果
      */
     @GetMapping("/getAdBySpaceKey")
-    List<PromotionSpaceDto> getAdBySpaceKey(@RequestParam String[] spaceKey);
+    List<PromotionSpaceDto> getAdBySpaceKey(@RequestParam("spaceKey") String[] spaceKey);
+
+    /**
+     * 新增或修改广告位
+     *
+     * @param spaceDto 参数
+     * @return 结果
+     */
+    @PostMapping("/space/saveOrUpdateSpace")
+    ResponseDTO<?> saveOrUpdateSpace(PromotionSpaceDto spaceDto);
+
+    /**
+     * 通过id获取广告位
+     *
+     * @param id 广告位id
+     * @return 结果
+     */
+    @GetMapping("/space/getSpaceById")
+    PromotionSpaceDto getSpaceById(@RequestParam("id") Integer id);
 }

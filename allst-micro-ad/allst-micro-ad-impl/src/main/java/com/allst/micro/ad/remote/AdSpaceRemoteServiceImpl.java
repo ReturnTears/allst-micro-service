@@ -8,10 +8,12 @@ import com.allst.micro.ad.service.IPromotionSpaceService;
 import com.allst.micro.dto.PromotionAdDto;
 import com.allst.micro.dto.PromotionSpaceDto;
 import com.allst.micro.remote.AdSpaceRemoteService;
+import com.allst.micro.response.ResponseDTO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -75,5 +77,43 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
         }
 
         return spaceDtoList;
+    }
+
+    @PostMapping("/space/saveOrUpdateSpace")
+    @Override
+    public ResponseDTO<?> saveOrUpdateSpace(PromotionSpaceDto spaceDto) {
+        PromotionSpace space = ConverUtil.convert(spaceDto, PromotionSpace.class);
+
+        assert space != null;
+        final Date now = new Date();
+        if (space.getId() != null) {
+            space.setCreateTime(now);
+            space.setUpdateTime(now);
+            space.setIsDel(0); // 0 不删除 1删除
+        } else {
+            space.setUpdateTime(now);
+        }
+
+        ResponseDTO<?> responseDTO = null;
+        try {
+            spaceService.saveOrUpdate(space);
+            responseDTO = ResponseDTO.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseDTO = ResponseDTO.ofError(e.getMessage());
+        }
+
+        return responseDTO;
+    }
+
+    @GetMapping("/space/getSpaceById")
+    @Override
+    public PromotionSpaceDto getSpaceById(Integer id) {
+        PromotionSpace space = spaceService.getById(id);
+        if (space == null) {
+            return new PromotionSpaceDto();
+        }
+
+        return ConverUtil.convert(space, PromotionSpaceDto.class);
     }
 }

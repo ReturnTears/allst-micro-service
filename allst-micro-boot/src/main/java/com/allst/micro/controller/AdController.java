@@ -4,9 +4,7 @@ import com.allst.micro.dto.PromotionSpaceDto;
 import com.allst.micro.remote.AdSpaceRemoteService;
 import com.allst.micro.response.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,11 @@ public class AdController {
     @Autowired
     AdSpaceRemoteService remoteService;
 
+    /**
+     * 获取广告位列表
+     *
+     * @return 结果
+     */
     @GetMapping("/space/getAllSpaces")
     public ResponseDTO<?> getAllSpaces() {
         List<PromotionSpaceDto> dtoList = remoteService.getAllSpaces();
@@ -30,4 +33,24 @@ public class AdController {
         return ResponseDTO.success(dtoList);
     }
 
+    /**
+     * 新增或修改广告位
+     *
+     * @return 结果
+     */
+    @PostMapping("/space/saveOrUpdateSpace")
+    public ResponseDTO<?> saveOrUpdateSpace(@RequestBody PromotionSpaceDto spaceDto) {
+        return remoteService.saveOrUpdateSpace(spaceDto);
+    }
+
+    /**
+     * 通过id获取广告位
+     *
+     * @param id 参数id
+     * @return 结果
+     */
+    @GetMapping("/space/getSpaceById")
+    public ResponseDTO<?> getSpaceById(@RequestParam("id") Integer id) {
+        return ResponseDTO.success(remoteService.getSpaceById(id));
+    }
 }
