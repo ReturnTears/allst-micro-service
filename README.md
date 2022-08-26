@@ -95,6 +95,20 @@ impl 引用 api模块
 4、启动网关服务，访问地址： http://localhost:9001/boot/ad/space/getAllSpaces
 正常访问到数据即成功配置网关
 ```
+## 🌶 文件系统
+模块名：allst-micro-dfs
+```text
+后续添加
+```
+
+## 🍌 补充说明
+```text
+负载均衡、消息队列、邮件通知、日志监控、
+
+......
+
+后续添加
+```
 
 ## 📚 问题记录及解决思路
 ```text
