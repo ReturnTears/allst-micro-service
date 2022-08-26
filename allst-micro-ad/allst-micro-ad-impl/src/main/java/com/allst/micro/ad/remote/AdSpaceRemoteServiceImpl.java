@@ -79,7 +79,7 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
         return spaceDtoList;
     }
 
-    @PostMapping("/saveOrUpdateSpace")
+    @PostMapping("/space/saveOrUpdateSpace")
     @Override
     public ResponseDTO<?> saveOrUpdateSpace(PromotionSpaceDto spaceDto) {
         PromotionSpace space = ConverUtil.convert(spaceDto, PromotionSpace.class);
@@ -104,5 +104,16 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
         }
 
         return responseDTO;
+    }
+
+    @GetMapping("/space/getSpaceById")
+    @Override
+    public PromotionSpaceDto getSpaceById(Integer id) {
+        PromotionSpace space = spaceService.getById(id);
+        if (space == null) {
+            return new PromotionSpaceDto();
+        }
+
+        return ConverUtil.convert(space, PromotionSpaceDto.class);
     }
 }

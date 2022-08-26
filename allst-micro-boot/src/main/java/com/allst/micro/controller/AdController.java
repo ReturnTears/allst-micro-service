@@ -42,4 +42,15 @@ public class AdController {
     public ResponseDTO<?> saveOrUpdateSpace(@RequestBody PromotionSpaceDto spaceDto) {
         return remoteService.saveOrUpdateSpace(spaceDto);
     }
+
+    /**
+     * 通过id获取广告位
+     *
+     * @param id 参数id
+     * @return 结果
+     */
+    @GetMapping("/space/getSpaceById")
+    public ResponseDTO<?> getSpaceById(@RequestParam("id") Integer id) {
+        return ResponseDTO.success(remoteService.getSpaceById(id));
+    }
 }

@@ -32,7 +32,7 @@ public interface AdSpaceRemoteService {
      * @return 结果
      */
     @GetMapping("/getAdBySpaceKey")
-    List<PromotionSpaceDto> getAdBySpaceKey(@RequestParam String[] spaceKey);
+    List<PromotionSpaceDto> getAdBySpaceKey(@RequestParam("spaceKey") String[] spaceKey);
 
     /**
      * 新增或修改广告位
@@ -40,6 +40,15 @@ public interface AdSpaceRemoteService {
      * @param spaceDto 参数
      * @return 结果
      */
-    @PostMapping("/saveOrUpdateSpace")
+    @PostMapping("/space/saveOrUpdateSpace")
     ResponseDTO<?> saveOrUpdateSpace(PromotionSpaceDto spaceDto);
+
+    /**
+     * 通过id获取广告位
+     *
+     * @param id 广告位id
+     * @return 结果
+     */
+    @GetMapping("/space/getSpaceById")
+    PromotionSpaceDto getSpaceById(@RequestParam("id") Integer id);
 }
