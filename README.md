@@ -26,6 +26,16 @@
 ## 🍎 前台搭建
 模块名： allst-micro-front
 
+```text
+前台服务调用后端服务接口
+1、添加同boot模块相同的依赖
+2、添加配置文件
+3、添加启动类
+4、编写前台访问控制器接口
+5、测试，http://localhost:8081/ad/getAdBySpaceKey?spaceKey=north
+6、测试前台网关接口地址： http://localhost:8081/front/ad/getAdBySpaceKey?spaceKey=north
+```
+
 ## 🍋 后台搭建
 模块名： allst-micro-boot
 
