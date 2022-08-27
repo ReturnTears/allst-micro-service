@@ -1,5 +1,8 @@
 package com.allst.micro.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -49,12 +52,18 @@ public class PromotionAdDto implements Serializable {
 
     /**
      * 开始时间
+     * DateTimeFormat 是将接受到的数据转换位数据库对应的格式存储
+     * JsonFormat 是将数据库查询到的数据封装为JSON时转换的格式
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GTM+8")
     private Date startTime;
 
     /**
      * 结束时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GTM+8")
     private Date endTime;
 
     /**

@@ -1,5 +1,6 @@
 package com.allst.micro.controller;
 
+import com.allst.micro.dto.PromotionAdDto;
 import com.allst.micro.dto.PromotionSpaceDto;
 import com.allst.micro.remote.AdSpaceRemoteService;
 import com.allst.micro.response.ResponseDTO;
@@ -62,5 +63,16 @@ public class AdController {
     @GetMapping("/getAllAds")
     public ResponseDTO<?> getAllAds() {
         return ResponseDTO.success(remoteService.getAllAds());
+    }
+
+    /**
+     * 新增或修改广告
+     *
+     * @param adDto 参数
+     * @return 接口
+     */
+    @PostMapping("/saveOrUpdateAd")
+    public ResponseDTO<?> saveOrUpdateAd(@RequestBody PromotionAdDto adDto) {
+        return remoteService.saveOrUpdateAd(adDto);
     }
 }

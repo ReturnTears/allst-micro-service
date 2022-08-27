@@ -60,4 +60,13 @@ public interface AdSpaceRemoteService {
      */
     @GetMapping("/getAllAds")
     List<PromotionAdDto> getAllAds();
+
+    /**
+     * 新增或修改广告位
+     *
+     * @param adDto 参数
+     * @return 结果
+     */
+    @PostMapping("/saveOrUpdateAd")
+    ResponseDTO<?> saveOrUpdateAd(PromotionAdDto adDto);
 }

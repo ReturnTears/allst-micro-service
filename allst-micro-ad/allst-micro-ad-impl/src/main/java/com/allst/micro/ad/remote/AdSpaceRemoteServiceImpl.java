@@ -130,4 +130,27 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
 
         return ConverUtil.convertList(list, PromotionAdDto.class);
     }
+
+    @PostMapping("/saveOrUpdateAd")
+    @Override
+    public ResponseDTO<?> saveOrUpdateAd(PromotionAdDto adDto) {
+        PromotionAd ad = ConverUtil.convert(adDto, PromotionAd.class);
+        assert ad != null;
+        final Date now = new Date();
+        if (ad.getId() == null) {
+            ad.setCreateTime(now);
+            ad.setUpdateTime(now);
+            ad.setStatus(1); // 0无效 1有效
+        } else {
+            ad.setUpdateTime(now);
+        }
+        ResponseDTO<?> responseDTO = null;
+        try {
+            adService.saveOrUpdate(ad);
+            responseDTO = ResponseDTO.success();
+        } catch (Exception e) {
+            responseDTO = ResponseDTO.ofError(e.getMessage());
+        }
+        return responseDTO;
+    }
 }
