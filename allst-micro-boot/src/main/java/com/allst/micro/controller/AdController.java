@@ -75,4 +75,15 @@ public class AdController {
     public ResponseDTO<?> saveOrUpdateAd(@RequestBody PromotionAdDto adDto) {
         return remoteService.saveOrUpdateAd(adDto);
     }
+
+    /**
+     * 通过id获取广告
+     *
+     * @param id 参数id
+     * @return 结果
+     */
+    @GetMapping("/getAdById")
+    public ResponseDTO<?> getAdById(@RequestParam("id") Integer id) {
+        return ResponseDTO.success(remoteService.getAdById(id));
+    }
 }

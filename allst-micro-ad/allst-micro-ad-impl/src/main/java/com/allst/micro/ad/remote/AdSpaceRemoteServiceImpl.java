@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * 远程调用Ad Space广告位接口的实现类
- *  编写该实现类后，当前模块中就不再需要PromotionSpaceController前端控制器了，直接使用远程调用即可访问当前服务对应的实现内容
+ * 编写该实现类后，当前模块中就不再需要PromotionSpaceController前端控制器了，直接使用远程调用即可访问当前服务对应的实现内容
  *
  * @author Hutu
  * @since 2022-08-25 下午 04:03
@@ -152,5 +152,15 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
             responseDTO = ResponseDTO.ofError(e.getMessage());
         }
         return responseDTO;
+    }
+
+    @GetMapping("/getAdById")
+    @Override
+    public PromotionAdDto getAdById(Integer id) {
+        PromotionAd ad = adService.getById(id);
+        if (ad == null) {
+            return new PromotionAdDto();
+        }
+        return ConverUtil.convert(ad, PromotionAdDto.class);
     }
 }

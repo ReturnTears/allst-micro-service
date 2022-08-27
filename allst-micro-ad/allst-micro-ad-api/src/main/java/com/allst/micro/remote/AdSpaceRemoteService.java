@@ -69,4 +69,13 @@ public interface AdSpaceRemoteService {
      */
     @PostMapping("/saveOrUpdateAd")
     ResponseDTO<?> saveOrUpdateAd(PromotionAdDto adDto);
+
+    /**
+     * 通过id获取广告
+     *
+     * @param id 广告id
+     * @return 结果
+     */
+    @GetMapping("/getAdById")
+    PromotionAdDto getAdById(@RequestParam("id") Integer id);
 }
