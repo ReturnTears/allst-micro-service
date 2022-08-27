@@ -110,6 +110,32 @@ impl 引用 api模块
 后续添加
 ```
 
+## 前端环境搭建
+```text
+前端环境包括：
+1、运行环境： 安装Node、配置相应的环境变量
+   查看Node版本：node -v
+2、安装git bash
+
+3、编写前端项目代码， 推荐编辑工具VS Code
+   项目名称：allst-front-vue 供用户使用的前台前端项目
+           allst-boot-vue 供开发人员或管理人员使用的后台前端项目
+    后期会使用Svelte将上述两个前端项目改写：
+        allst-front-svelte
+        allst-boot-svelte
+    
+    拿到项目源码后需要先安装项目依赖包：npm install, 当前步骤会将项目package.json文件中依赖的包安装到本地node_module文件夹中
+    如果Node版本过高，可能会出现安装失败问题，查看“## 问题记录以及解决思路”    
+
+    配置上连接后端接口的地址信息,修改proxyTable: {}
+
+    启动项目，查看项目是否正常运行： npm run dev
+
+4、打包项目
+    项目打包命令： npm run build
+
+```
+
 ## 📚 问题记录及解决思路
 ```text
 1、启动SpringCloud项目启动报错：Error creating bean with name peerEurekaNodes defined in class path resource
@@ -142,6 +168,12 @@ impl 引用 api模块
 4、运行项目时报错：org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project xxx
 项目结构说明：项目结构是一个父项目，多个子项目目录如下，一个子项目依赖于另一个子项目，这时候运行项目报上述错误，解决如下：
     先对父项目进行clean和install，再运行项目
+
+5、前端项目中，npm install 报错：ERESOLVE unable to resolve dependency tree
+   问题原因：Node 14.0 之前的版本是正常的，将版本升级到16.0+后会出现上述错误。
+   解决思路：使用如下命令安装： npm i --legacy-peer-deps
+
+
 ```
 
 ## 😊 Code Review
