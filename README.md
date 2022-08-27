@@ -6,6 +6,27 @@
 若项目在启动的过程中存在异常或错误，查看 ## 问题记录及解决思路
 ```
 
+## 🍆 用户模块
+模块名： allst-micro-user
+
+开发用户管理业务
++ 1、新建两个子模块allst-micro-user-api 和 allst-micro-user-impl, 以下简称： userApi 和 userImpl
++ 2、添加依赖
+```text
+<parent>
+    <groupId>com.allst.micro</groupId>
+    <artifactId>allst-micro-bom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</parent>
+<dependencies>
+    <dependency>
+        <groupId>com.allst.micro</groupId>
+        <artifactId>allst-micro-common</artifactId>
+    </dependency>
+</dependencies>
+```
++ 3、生成代码
+
 ## 🍌 其他模块
 模块名： allst-micro-bom
 ```text
@@ -13,6 +34,7 @@
 添加SpringBoot、SpringCloud相关依赖
 其他模块会依赖该模块，需将当前模块install到本地仓库中
 ```
+
 ## 🍓 公共模块
 模块名： allst-micro-common
 ```text
@@ -73,7 +95,6 @@ impl 引用 api模块
 + 2、添加Eureka Server启动类
 + 3、添加项目启动类，启动项目成功后访问：http://localhost:8761
 
-
 ## 🍉 配置中心
 模块名：allst-micro-config
 
@@ -95,10 +116,18 @@ impl 引用 api模块
 4、启动网关服务，访问地址： http://localhost:9001/boot/ad/space/getAllSpaces
 正常访问到数据即成功配置网关
 ```
+
 ## 🌶 文件系统
 模块名：allst-micro-dfs
 ```text
 后续添加
+```
+
+## 🍎 备注说明
+```text
+本应将各个业务模块分别使用数据库存储，例如：ad模块和user模块,...
+
+由于资源有限，这里将所有业务模块的表都放在同一个库（cloud）
 ```
 
 ## 🍌 补充说明
