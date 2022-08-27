@@ -53,4 +53,14 @@ public class AdController {
     public ResponseDTO<?> getSpaceById(@RequestParam("id") Integer id) {
         return ResponseDTO.success(remoteService.getSpaceById(id));
     }
+
+    /**
+     * 获取所有的广告列表
+     *
+     * @return 结果
+     */
+    @GetMapping("/getAllAds")
+    public ResponseDTO<?> getAllAds() {
+        return ResponseDTO.success(remoteService.getAllAds());
+    }
 }

@@ -41,6 +41,9 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
     @Override
     public List<PromotionSpaceDto> getAllSpaces() {
         List<PromotionSpace> list = spaceService.list();
+        if (list == null || list.size() == 0) {
+            return Lists.newArrayList();
+        }
         return ConverUtil.convertList(list, PromotionSpaceDto.class);
     }
 
@@ -115,5 +118,16 @@ public class AdSpaceRemoteServiceImpl implements AdSpaceRemoteService {
         }
 
         return ConverUtil.convert(space, PromotionSpaceDto.class);
+    }
+
+    @GetMapping("/getAllAds")
+    @Override
+    public List<PromotionAdDto> getAllAds() {
+        List<PromotionAd> list = adService.list();
+        if (list == null || list.size() == 0) {
+            return Lists.newArrayList();
+        }
+
+        return ConverUtil.convertList(list, PromotionAdDto.class);
     }
 }

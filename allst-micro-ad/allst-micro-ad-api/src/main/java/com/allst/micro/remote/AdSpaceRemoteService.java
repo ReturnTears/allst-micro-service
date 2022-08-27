@@ -1,5 +1,6 @@
 package com.allst.micro.remote;
 
+import com.allst.micro.dto.PromotionAdDto;
 import com.allst.micro.dto.PromotionSpaceDto;
 import com.allst.micro.response.ResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -51,4 +52,12 @@ public interface AdSpaceRemoteService {
      */
     @GetMapping("/space/getSpaceById")
     PromotionSpaceDto getSpaceById(@RequestParam("id") Integer id);
+
+    /**
+     * 获取所有的广告
+     *
+     * @return 结果
+     */
+    @GetMapping("/getAllAds")
+    List<PromotionAdDto> getAllAds();
 }
