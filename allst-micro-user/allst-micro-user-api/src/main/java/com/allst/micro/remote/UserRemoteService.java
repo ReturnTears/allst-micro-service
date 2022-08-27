@@ -1,6 +1,8 @@
 package com.allst.micro.remote;
 
 import com.allst.micro.dto.UserDTO;
+import com.allst.micro.param.UserQueryParam;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(name = "allst-micro-user", path = "/user")
 public interface UserRemoteService {
+
+    /**
+     * 分页查询用户数据
+     */
+    @GetMapping("/getUserPages")
+    Page<UserDTO> getUserPages(UserQueryParam userQueryParam);
+
     /**
      * 通过id获取用户
      *

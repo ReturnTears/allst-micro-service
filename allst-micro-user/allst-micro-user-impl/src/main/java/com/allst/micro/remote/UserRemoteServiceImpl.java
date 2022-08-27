@@ -5,8 +5,12 @@ import com.allst.micro.Util.ConverUtil;
 import com.allst.micro.date.DateUtil;
 import com.allst.micro.dto.UserDTO;
 import com.allst.micro.entity.User;
+import com.allst.micro.param.UserQueryParam;
 import com.allst.micro.service.IUserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 用户远程调用服务实现类
@@ -31,6 +39,51 @@ public class UserRemoteServiceImpl implements UserRemoteService {
     IUserService userService;
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    @GetMapping("/getUserPages")
+    @Override
+    public Page<UserDTO> getUserPages(UserQueryParam userQueryParam) {
+        String phone = userQueryParam.getPhone();
+        Integer userId = userQueryParam.getUserId();
+        Integer currentPage = userQueryParam.getCurrentPage();
+        Integer pageSize = userQueryParam.getPageSize();
+        Date startCreateTime = userQueryParam.getStartCreateTime();
+        Date endCreateTime = userQueryParam.getEndCreateTime();
+        Page<User> page = new Page<>(currentPage, pageSize);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        // 根据课程名称查询
+        if (StringUtils.isNotBlank(phone)) {
+            queryWrapper.like("phone", phone);
+        }
+        if (null != startCreateTime && null != endCreateTime) {
+            queryWrapper.ge("create_time", startCreateTime);
+            queryWrapper.le("create_time", endCreateTime);
+        }
+        if (null != userId && userId > 0) {
+            queryWrapper.eq("id", userId);
+        }
+        // 根据课程状态查询
+        int count = userService.count(queryWrapper);
+        queryWrapper.orderByDesc("id");
+        IPage<User> selectPage = this.userService.getBaseMapper().selectPage(page, queryWrapper);
+
+        List<UserDTO> userDTOList = Lists.newArrayList();
+        // 获取课程对应的模块的信息
+        for (User user : selectPage.getRecords()) {
+            UserDTO userDTO = new UserDTO();
+            BeanUtil.copyProperties(user, userDTO);
+            userDTOList.add(userDTO);
+        }
+
+        Page<UserDTO> result = new Page<>();
+        // 分页查询结果对象属性的拷贝
+        BeanUtil.copyProperties(selectPage, result);
+        // 设置分页结果对象record属性
+        result.setRecords(userDTOList);
+        result.setTotal(count);
+
+        return result;
+    }
 
     @GetMapping("/getUserById")
     @Override
