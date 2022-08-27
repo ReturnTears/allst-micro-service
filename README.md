@@ -120,11 +120,11 @@ impl 引用 api模块
 3、编写前端项目代码， 推荐编辑工具VS Code
    项目名称：allst-front-vue 供用户使用的前台前端项目
            allst-boot-vue 供开发人员或管理人员使用的后台前端项目
-    后期会使用Svelte将上述两个前端项目改写：
+    后期会使用Svelte将上述两个前端项目重写：
         allst-front-svelte
         allst-boot-svelte
     
-    拿到项目源码后需要先安装项目依赖包：npm install, 当前步骤会将项目package.json文件中依赖的包安装到本地node_module文件夹中
+    拿到项目源码后需要先安装项目依赖包：npm install, 当前步骤会将项目package.json文件中依赖的包安装到本地node_modules文件夹中
     如果Node版本过高，可能会出现安装失败问题，查看“## 问题记录以及解决思路”    
 
     配置上连接后端接口的地址信息,修改proxyTable: {}
@@ -134,6 +134,8 @@ impl 引用 api模块
 4、打包项目
     项目打包命令： npm run build
 
+5、前端项目地址：
+    https://github.com/ReturnTears/{ allst-front-vue | allst-boot-vue | allst-front-svelte | allst-boot-svelte }
 ```
 
 ## 📚 问题记录及解决思路
