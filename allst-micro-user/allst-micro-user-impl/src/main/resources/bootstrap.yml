@@ -1,0 +1,20 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: allst-micro-user
+  cloud:
+    config:
+      uri: http://localhost:8090/
+      label: master
+      profile: dev
+      name: config-micro-service
+
+#注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

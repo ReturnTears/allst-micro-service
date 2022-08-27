@@ -16,12 +16,12 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * 广告管理模块代码生成工具类
+ * 用户管理模块代码生成工具类
  *
  * @author Hutu
- * @since 2022-08-24 下午 11:07
+ * @since 2022-08-27 下午 04:29
  */
-public class Generator {
+public class UserGenerator {
     /**
      * <p>
      * 读取控制台内容
@@ -46,7 +46,7 @@ public class Generator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         // String projectPath = System.getProperty("user.dir") + "/edu-ad-impl/";
-        String projectPath = "E:\\Idea2020Projects\\allst-micro-service\\allst-micro-ad\\allst-micro-ad-impl\\";
+        String projectPath = "E:\\Idea2020Projects\\allst-micro-service\\allst-micro-user\\allst-micro-user-impl\\";
         gc.setOutputDir(projectPath + "src/main/java");
         gc.setAuthor("Hutu");
         gc.setOpen(false);
@@ -65,7 +65,7 @@ public class Generator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("please input module name: eg, ad"));
+        pc.setModuleName(scanner("please input module name: eg, user"));
         pc.setParent("com.allst.micro");
         mpg.setPackageInfo(pc);
 

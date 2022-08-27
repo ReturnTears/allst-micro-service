@@ -17,6 +17,7 @@
         <groupId>com.allst.micro</groupId>
         <artifactId>allst-micro-bom</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <dependencies>
