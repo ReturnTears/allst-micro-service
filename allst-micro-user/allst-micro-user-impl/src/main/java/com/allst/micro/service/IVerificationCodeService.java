@@ -13,7 +13,7 @@ import com.allst.micro.entity.VerificationCode;
  */
 public interface IVerificationCodeService extends IService<VerificationCode> {
 
-    boolean save(String telephone);
+    void save(String telephone);
 
-    boolean checkCode(String telephone, String code);
+    void checkCode(String telephone, String code);
 }
