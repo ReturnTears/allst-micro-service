@@ -28,6 +28,7 @@
 + 3、生成代码
 
 ## 🍈 oauth认证模块
+[oauth2认证](allst-micro-oauth/README.md)
 ```text
 基于oauth2实现用户认证
 

@@ -1,1 +1,21 @@
-# 配置
+spring:
+  application:
+    name: allst-micro-oauth
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: allst-mirco-config
+      name: allst-micro-oauth
+      profile: dev
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true # 当spring MVC找不到对应的controller来处理请求时，就不会使用默认的方式处理了，直接抛出异常，就会被ExceptionAdviceHandler 捕获到；到这里自定义异常处理结束
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
