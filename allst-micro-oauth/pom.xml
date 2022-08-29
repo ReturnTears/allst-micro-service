@@ -33,6 +33,12 @@
             <artifactId>allst-micro-common</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.allst.micro</groupId>
+            <artifactId>allst-micro-user-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
