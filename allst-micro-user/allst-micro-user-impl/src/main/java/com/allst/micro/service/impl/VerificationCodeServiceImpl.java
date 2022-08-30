@@ -27,7 +27,7 @@ import java.util.Date;
 public class VerificationCodeServiceImpl extends ServiceImpl<VerificationCodeMapper, VerificationCode> implements IVerificationCodeService {
 
     @Override
-    public void save(String telephone) {
+    public boolean save(String telephone) {
         // 获取动态验证码
         String randomNumber = RandomUtil.getRandomNumber(6);
         // 发送验证码
@@ -41,11 +41,11 @@ public class VerificationCodeServiceImpl extends ServiceImpl<VerificationCodeMap
         verificationCode.setCheckTimes(0);
 
         // 保存验证码
-        this.save(verificationCode);
+        return this.save(verificationCode);
     }
 
     @Override
-    public void checkCode(String telephone, String code) {
+    public boolean checkCode(String telephone, String code) {
         //判断验证码是否存在
         QueryWrapper<VerificationCode> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("phone", telephone);
@@ -68,6 +68,6 @@ public class VerificationCodeServiceImpl extends ServiceImpl<VerificationCodeMap
         int checkTimes = verificationCode.getCheckTimes() + 1;
         verificationCode.setCheckTimes(checkTimes);
 
-        this.updateById(verificationCode);
+        return this.updateById(verificationCode);
     }
 }
