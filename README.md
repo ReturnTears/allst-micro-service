@@ -221,7 +221,7 @@ impl 引用 api模块
 3、启动网关服务
 4、启动后台服务 | 前台服务 | 用户服务 | 认证服务 | ...
 ```
-![image](https://github.com/ReturnTears/blob/allst-micro-service/allst-files/img/服务启动完成截图.jpg)
+![image](https://github.com/ReturnTears/allst-micro-service/blob/master/allst-files/服务启动完成截图.png)
 
 ## 水果符号
 ```text
