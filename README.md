@@ -106,7 +106,7 @@ impl 引用 api模块
 模块名：allst-micro-config
 
 配置中心流程（以获取GitHub上配置文件为例）：
-- 1、在allst-config（该想要需要为公共访问权限，私有访问权限放在后续介绍）项目中新建配置文件config-mirco-service-dev.yml
+- 1、在allst-config（该项目需要为公共访问权限，私有访问权限放在后续介绍）项目中新建配置文件config-mirco-service-dev.yml
 - 2、添加application.yml配置文件，并添加配置
 - 3、添加项目启动类，启动成功后访问：http://localhost:8090/config-micro-service-dev.yml
 - 4、访问配置文件成功，文件存放在：file:/C:/Users/June/AppData/Local/Temp/config-repo-8257864722419767941/config-micro-service-dev.yml
@@ -212,6 +212,14 @@ impl 引用 api模块
    解决思路：使用如下命令安装： npm i --legacy-peer-deps
 
 
+```
+
+## 模块启动顺序
+```
+1、启动配置中心
+2、启动注册中心eureka
+3、启动网关服务
+4、启动后台服务 | 前台服务 | 用户服务 | 认证服务 | 
 ```
 
 ## 水果符号

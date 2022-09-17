@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,14 +28,15 @@ import java.util.List;
  * @since 2022-08-27 下午 06:26
  */
 @Slf4j
-@RestController
-@RequestMapping("/user/weixin")
+@Service
+//@RestController
+//@RequestMapping("/user/weixin")
 public class WeixinRemoteServiceImpl implements WeixinRemoteService {
 
     @Autowired
     IWeixinService weixinService;
 
-    @GetMapping("/getUserWeixinByUserId")
+    //@GetMapping("/getUserWeixinByUserId")
     @Override
     public WeixinDTO getUserWeixinByUserId(Integer userId) {
         LambdaQueryWrapper<Weixin> wrapper = new QueryWrapper<Weixin>().lambda()
@@ -49,7 +51,7 @@ public class WeixinRemoteServiceImpl implements WeixinRemoteService {
         return dto;
     }
 
-    @GetMapping("/getUserWeixinByOpenId")
+    //@GetMapping("/getUserWeixinByOpenId")
     @Override
     public WeixinDTO getUserWeixinByOpenId(String openId) {
         LambdaQueryWrapper<Weixin> wrapper = new QueryWrapper<Weixin>().lambda()
@@ -64,7 +66,7 @@ public class WeixinRemoteServiceImpl implements WeixinRemoteService {
         return dto;
     }
 
-    @GetMapping("/getUserWeixinByUnionId")
+    //@GetMapping("/getUserWeixinByUnionId")
     @Override
     public WeixinDTO getUserWeixinByUnionId(String unionId) {
         LambdaQueryWrapper<Weixin> wrapper = new QueryWrapper<Weixin>().lambda()
@@ -79,7 +81,7 @@ public class WeixinRemoteServiceImpl implements WeixinRemoteService {
         return dto;
     }
 
-    @PostMapping("/saveUserWeixin")
+    //@PostMapping("/saveUserWeixin")
     @Override
     public WeixinDTO saveUserWeixin(WeixinDTO weixinDTO) {
         Weixin weixin = new Weixin();
@@ -96,7 +98,7 @@ public class WeixinRemoteServiceImpl implements WeixinRemoteService {
         return dto;
     }
 
-    @PostMapping("/updateUserWeixin")
+    //@PostMapping("/updateUserWeixin")
     @Override
     public boolean updateUserWeixin(WeixinDTO weixinDTO) {
         Weixin weixin = new Weixin();
@@ -108,7 +110,7 @@ public class WeixinRemoteServiceImpl implements WeixinRemoteService {
         return true;
     }
 
-    @PostMapping("/bindUserWeixin")
+    //@PostMapping("/bindUserWeixin")
     @Override
     public ResponseDTO<WeixinDTO> bindUserWeixin(WeixinDTO weixinDTO) {
         LambdaQueryWrapper<Weixin> wrapper = new QueryWrapper<Weixin>().lambda().eq(Weixin::getUserId, weixinDTO.getUserId())
@@ -146,7 +148,7 @@ public class WeixinRemoteServiceImpl implements WeixinRemoteService {
         return ResponseDTO.success(dto);
     }
 
-    @PostMapping("/unBindUserWeixin")
+    //@PostMapping("/unBindUserWeixin")
     @Override
     public boolean unBindUserWeixin(Integer userId) {
         LambdaQueryWrapper<Weixin> wrapper = new QueryWrapper<Weixin>().lambda().eq(Weixin::getUserId, userId).eq(Weixin::getIsDel, false);

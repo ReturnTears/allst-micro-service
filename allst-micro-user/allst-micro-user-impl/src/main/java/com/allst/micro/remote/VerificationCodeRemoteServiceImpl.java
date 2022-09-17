@@ -6,6 +6,7 @@ import com.allst.micro.response.ResponseDTO;
 import com.allst.micro.service.IVerificationCodeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,14 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-08-27 下午 06:25
  */
 @Slf4j
-@RestController
-@RequestMapping("/user/verCode")
+@Service
+//@RestController
+//@RequestMapping("/user/verCode")
 public class VerificationCodeRemoteServiceImpl implements VerificationCodeRemoteService {
 
     @Autowired
     IVerificationCodeService verificationCodeService;
 
-    @RequestMapping("sendCode")
+    //@RequestMapping("sendCode")
     @Override
     public ResponseDTO<?> sendCode(String telephone) {
         ResponseDTO<?> responseDTO;
@@ -45,7 +47,7 @@ public class VerificationCodeRemoteServiceImpl implements VerificationCodeRemote
      *
      * @return 结果
      */
-    @RequestMapping("checkCode")
+    //@RequestMapping("checkCode")
     @Override
     public ResponseDTO<?> checkCode(String telephone, String code) {
         ResponseDTO<?> responseDTO;

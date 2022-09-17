@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +32,9 @@ import java.util.List;
  * @since 2022-08-27 下午 05:58
  */
 @Slf4j
-@RestController
-@RequestMapping("/user")
+@Service
+//@RestController
+//@RequestMapping("/user")
 public class UserRemoteServiceImpl implements UserRemoteService {
 
     @Autowired
@@ -40,7 +42,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    @GetMapping("/getUserPages")
+    //@GetMapping("/getUserPages")
     @Override
     public Page<UserDTO> getUserPages(UserQueryParam userQueryParam) {
         String phone = userQueryParam.getPhone();
@@ -85,7 +87,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return result;
     }
 
-    @GetMapping("/getUserById")
+    //@GetMapping("/getUserById")
     @Override
     public UserDTO getUserById(Integer userId) {
         User user = this.userService.getById(userId);
@@ -95,7 +97,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return ConverUtil.convert(user, UserDTO.class);
     }
 
-    @GetMapping("/getUserByPhone")
+    //@GetMapping("/getUserByPhone")
     @Override
     public UserDTO getUserByPhone(String phone) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
@@ -107,14 +109,14 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return ConverUtil.convert(user, UserDTO.class);
     }
 
-    @GetMapping("/isRegister")
+    //@GetMapping("/isRegister")
     @Override
     public boolean isRegister(String phone) {
         UserDTO userDTO = getUserByPhone(phone);
         return userDTO != null && !Boolean.TRUE.equals(userDTO.getDel()); // 返回对象不为空且未被删除， 即表示已注册
     }
 
-    @PostMapping("/saveUser")
+    //@PostMapping("/saveUser")
     @Override
     public UserDTO saveUser(UserDTO userDTO) {
         User user = new User();
@@ -130,7 +132,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return userDTO;
     }
 
-    @PostMapping("/updateUser")
+    //@PostMapping("/updateUser")
     @Override
     public boolean updateUser(UserDTO userDTO) {
         if (null == userDTO.getId() || userDTO.getId() <= 0) {
@@ -147,7 +149,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return true;
     }
 
-    @GetMapping("/isUpdatedPassword")
+    //@GetMapping("/isUpdatedPassword")
     @Override
     public boolean isUpdatedPassword(Integer userId) {
         User user = this.userService.getById(userId);
@@ -159,7 +161,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return true;
     }
 
-    @PostMapping("/setPassword")
+    //@PostMapping("/setPassword")
     @Override
     public boolean setPassword(Integer userId, String password, String configPassword) {
         User user = this.userService.getById(userId);
@@ -175,7 +177,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return true;
     }
 
-    @PostMapping("/updatePassword")
+    //@PostMapping("/updatePassword")
     @Override
     public boolean updatePassword(Integer userId, String oldPassword, String newPassword, String configPassword) {
         User user = this.userService.getById(userId);
@@ -195,7 +197,7 @@ public class UserRemoteServiceImpl implements UserRemoteService {
         return true;
     }
 
-    @PostMapping("/forbidUser")
+    //@PostMapping("/forbidUser")
     @Override
     public boolean forbidUser(Integer userId) {
         User user = this.userService.getById(userId);
