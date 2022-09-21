@@ -11,5 +11,11 @@
 
     <artifactId>allst-micro-course-impl</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.allst.micro</groupId>
+            <artifactId>allst-micro-course-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
