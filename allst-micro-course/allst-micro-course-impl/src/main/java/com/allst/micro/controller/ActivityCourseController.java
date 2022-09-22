@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * 活动课程控制器
+ *
  * @author Hutu
  * @since 2022-09-21 下午 10:22
  */

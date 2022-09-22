@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICourseService extends IService<Course> {
 
-    IPage<Course> selectPage(Page<?> page, Wrapper<?> wrapper);
+    IPage<Course> selectPage(Page<Course> page, Wrapper<Course> wrapper);
 
     /**
      * 根据配置的自动上架时间，定时任务扫描达到上架时间的草稿状态的课程进行上架。
