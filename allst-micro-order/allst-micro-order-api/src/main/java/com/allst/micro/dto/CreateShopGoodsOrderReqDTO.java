@@ -20,7 +20,16 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CreateShopGoodsOrderReqDTO implements Serializable {
     private static final long serialVersionUID = 6507306131413105949L;
-    private Integer goodsId;//商品id
-    private Integer userId;//用户id
-    private UserCourseOrderSourceType sourceType;//订单来源
+    /**
+     * 商品id
+     */
+    private Integer goodsId;
+    /**
+     * 用户id
+     */
+    private Integer userId;
+    /**
+     * 订单来源
+     */
+    private UserCourseOrderSourceType sourceType;
 }

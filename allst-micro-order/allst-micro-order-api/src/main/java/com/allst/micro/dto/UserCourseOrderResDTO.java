@@ -20,5 +20,8 @@ import java.io.Serializable;
 public class UserCourseOrderResDTO implements Serializable {
     private static final long serialVersionUID = 8581183520872075235L;
 
-    private String orderNo;//订单号
+    /**
+     * 订单号
+     */
+    private String orderNo;
 }
