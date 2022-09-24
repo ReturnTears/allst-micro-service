@@ -1,23 +1,3 @@
-/*
-SQLyog Ultimate v12.5.1 (64 bit)
-MySQL - 5.5.42-log : Database - edu_course
-*********************************************************************
-*/
-
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`edu_course` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
-
-USE `edu_course`;
-
-/*Table structure for table `activity_course` */
-
 DROP TABLE IF EXISTS `activity_course`;
 
 CREATE TABLE `activity_course` (
@@ -277,7 +257,3 @@ insert  into `teacher`(`id`,`course_id`,`teacher_name`,`position`,`description`,
 (164,13,'111111','111111','111111','2020-08-21 11:04:35','2020-09-17 20:55:32',0),
 (165,14,'测试新增课程','测试新增课程','测试新增课程','2020-08-21 11:32:45','2020-08-21 11:32:45',0);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
