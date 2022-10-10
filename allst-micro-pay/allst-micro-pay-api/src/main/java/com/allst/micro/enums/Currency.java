@@ -5,21 +5,16 @@ import java.util.Map;
 
 /**
  * @author Hutu
- * @since 2022-10-10 下午 09:25
+ * @since 2022-10-10 下午 09:37
  */
-public enum Source implements Common {
-    APP(1,"APP"),
-    // 增加APP中的ios和安卓的区分
-    APP_IOS(5,"APP_IOS"),
-    APP_ANDROID(6,"APP_ANDROID"),
-    H5(2,"H5"),
-    PC(3,"PC"),
-    JSAPI(4,"JSAPI");
+public enum Currency implements Common {
+    CNY(1, "cny"),
+    GBEANS(2, "gBeans");
 
     private final Integer code;
     private final String name;
 
-    Source(Integer code, String name) {
+    Currency(Integer code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -29,15 +24,14 @@ public enum Source implements Common {
         return code;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    private static final Map<Integer, Source> CACHE = new HashMap<>();
+    private static final Map<Integer, Currency> CACHE = new HashMap<Integer, Currency>();
 
     static {
-        for (Source val :Source.values()) {
+        for (Currency val : Currency.values()) {
             CACHE.put(val.getCode(), val);
         }
     }
@@ -45,7 +39,7 @@ public enum Source implements Common {
     /**
      * 根据code值来转换为枚举类型
      */
-    public static Source parse(Integer code) {
+    public static Currency parse(Integer code) {
         return CACHE.get(code);
     }
 }
