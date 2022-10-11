@@ -1,0 +1,24 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: allst-micro-pay
+  cloud:
+    config:
+      uri: http://localhost:8090/
+      label: master
+      profile: dev
+      name: config-micro-service
+  main:
+    allow-bean-definition-overriding: true
+#注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    lease-expiration-duration-in-seconds: 9
+    lease-renewal-interval-in-seconds: 3
