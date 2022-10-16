@@ -124,6 +124,11 @@
             <artifactId>fastjson</artifactId>
             <version>2.0.14</version>
         </dependency>
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>4.33.1.ALL</version>
+        </dependency>
         <!-- dom4j -->
         <dependency>
             <groupId>org.dom4j</groupId>
